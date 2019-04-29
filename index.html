@@ -14,17 +14,17 @@
       body {
         background-color: hsl(204, 80%, 7.5%);
         color: rgba(255, 255, 255, 0.5);
-        font-family: "Segoe UI";
+        font-family: 'Segoe UI';
         margin: 0;
         line-height: 1.3;
+        display: flex;
+        min-height: 100vh;
       }
       #wrap {
-        position: absolute;
-        padding: 0 0 1vw;
-        bottom: 0;
+        padding: 1vw;
         display: flex;
         justify-content: space-around;
-        /* align-items: flex-end; */
+        margin: auto;
       }
       .column {
         width: 30%;
@@ -661,5 +661,23 @@
         </table>
       </div>
     </div>
+    <script>
+      var timer = 0;
+      function setSize() {
+        var viewWidth = window.innerWidth;
+        var viewHeight = window.innerHeight;
+        var html = document.getElementsByTagName('html')[0];
+        var fontSize = Math.min(viewWidth * 0.008, viewHeight * 0.012);
+        console.log(viewWidth);
+        html.style.fontSize = String(fontSize) + 'px';
+      }
+      setSize();
+      window.onresize = function() {
+        if (timer > 0) {
+          clearTimeout(timer);
+        }
+        timer = setTimeout(setSize, 200);
+      };
+    </script>
   </body>
 </html>
